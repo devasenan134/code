@@ -1,0 +1,12 @@
+Hi, I'm Devasenan, adaptable logician. A second-year student of KCT. A Machine Learning enthusiast and have explored a bit of OpenCV and Numpy packages.
+
+I have also done some projects on web development using Django, interesting ones are a typing practice website(https://funtype.pythonanywhere.com/) and a Movie recommending website(https://mrsapp.pythonanywhere.com/). 
+And other than this I also love to solve problems on Hackerrank in problem-solving, python, and more. 
+
+Languages Known - Python, C, Java, SQL
+
+Github - https://github.com/devasenan134
+Hackerrank - https://www.hackerrank.com/devasenan134
+LinkedIn - http://linkedin.com/in/devasenan/
+
+Resume - https://docs.google.com/document/d/1DjhXFxiZ0ymanz2PczXXzrttaGfcTD_OrH2SQc0CZxI/edit?usp=sharing
