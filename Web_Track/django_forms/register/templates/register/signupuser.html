@@ -1,0 +1,22 @@
+{% extends 'register/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Signup</button>
+    </form>
+
+    <a style="color:white;" href="{% url 'register' %}"><button type="submit"
+            class="btn btn-secondary">Back</button></a>
+    
+    <a style="color:white;" href="{% url 'loginuser' %}"><button type="submit"
+            class="btn btn-secondary">Already have an account?</button></a>
+{% endblock %}
