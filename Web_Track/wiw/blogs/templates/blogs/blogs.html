@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block body %}
+
+<h3 class="text-center mb-5">Blog{{ count|pluralize }}</h3>
+{% for blog in blogs %}
+<div class="row justify-content-center my-3">
+    <div class="col-md-10">
+        <a href="{% url 'blogs:blog' blog.id %}">
+            <h2>{{ blog.title }}</h2>
+        </a>
+        <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>
+        <h4>{{ blog.content|striptags|truncatechars:50 }}</h4>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

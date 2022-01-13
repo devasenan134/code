@@ -1,0 +1,32 @@
+{% extends "home/base.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<h1 style="font-weight: bold;">
+    Videos
+</h1>
+<hr>
+
+<div class="row">
+    {% for video in videos %}
+    <!--div class="card" style="width: 18rem;"-->
+    <div class="col-lg-4 col-md-6">
+        <a href="{{ video.url }}" target="_blank">
+            <img src="{{ video.img.url }}" class="card-img-top" alt="...">
+        </a>
+        <!--div class="card-body"-->
+        <br><br>
+        <h5 class="card-title">{{ video.title|truncatechars:30 }}</h5>
+        <p class="card-text">{{ video.description|truncatechars:100 }}</p>
+        <a href="{% url 'blogs:blog' video.id %}" class="btn btn-primary">Explore more</a>
+        <br><br>
+        <!--/div-->
+    </div>
+    {% endfor %}
+</div>
+
+</div>
+
+{% endblock %}
