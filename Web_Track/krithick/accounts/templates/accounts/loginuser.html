@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block body %}
+</nav>
+
+    <div class="container">
+
+    <div class="form-head">
+        Login to invest
+    </div>
+    <!--img src="{% static 'accounts/login_img.PNG' %}" width="150px" height="150px" style="margin-top:40px; margin-left:155px; margin-right:155px; margin-bottom:40px;"-->
+    
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <!--input name="email" type="text" placeholder="Email or Username" style="height:50px; width:400px; margin:30px; margin-bottom:5px; margin-top:0px; padding:10px;">
+        <input name="passwd" type="password" placeholder="Password" style="height:50px; width:400px; margin:30px; margin-top:5px; margin-bottom:5px; padding:10px;">
+        <input type="submit" value="Sign In" style="height:50px; width:400px; margin:30px; margin-top:5px; margin-bottom:40px; background-color:#3366FF; color:white; font-family:sans-serif; font-weight: bold;"-->
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    
+    <a style="color:black;" href="{% url 'accounts:signupuser' %}">Create an account?</a>
+    
+    
+    </div>
+
+{% endblock %}

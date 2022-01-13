@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+}
+
+.navbar {
+    background-color: coral;
+    min-height: 80px;
+}
+
+.navbar a {
+    color: white;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.navbar .btn {
+    color: coral;
+}
+
+.cover_img img{
+    width: 100vw;
+    min-height: 40vh;
+    max-height: 60vh;
+}
+
+.container {
+    padding: 10px 40px;
+}
+
+.container.index {
+    padding: 30px;
+}
+
+.loggedout , .loggedin{
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 100px;
+    line-height: 4em;
+
+    background-color: white;
+    border-radius: 7px;
+
+    min-height: 200px;
+    min-height: 400px;
+}
+
+.loggedout .btn {
+    margin: 10px;
+}
+
+.form-head {
+    margin:25px 0; 
+    text-align: center; 
+    font-size: 32px;
+}
+
+@media(min-width:700px){
+    .cover_img img{
+        width: 100vw;
+    }
+}

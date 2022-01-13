@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block body %}
+    
+    {% if user.is_authenticated %}
+    
+        <form action="{% url 'accounts:logoutuser' %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-light" type="submit">Logout</button>
+        </form> 
+    {% endif %}
+    </nav>
+
+
+    <div class="cover_img">
+        <img src="{% static 'home/swarna_img.jpeg' %}">
+    </div>
+
+
+    <div class="container index">
+        
+        {% if user.is_authenticated %}
+        <div class="loggedin">
+            <h2 id="user_name">Hello {{ user.username }}</h2>
+            <div id="payment">
+                <h4>Please click below to invest on us</h4>
+                <a href="#">Link</a>
+            </div>
+        </div>
+        
+        {% else %}
+        <div class="loggedout">
+            <h4>Sign In to proceed further with your investment</h4>
+            <a href="{% url 'accounts:signupuser' %}"><button class="btn btn-success">Signup</button></a>
+            <a href="{% url 'accounts:loginuser' %}"><button class="btn btn-success">Login</button></a>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
