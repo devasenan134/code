@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.heading {
+    color: green;
+}
+
+.heading.first {
+    color: blue;
+}
+
+.para.first {
+    color:red;
+}
+
+.para.second {
+    color: orange;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    padding: 20px;
+    text-align: center;
+    margin: 20%;
+    border: 10px solid white;
+    background-color: orchid;
+}
