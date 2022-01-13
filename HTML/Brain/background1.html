@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <head>
+        <title>
+            Hello!
+        </title>
+        <script>
+            function change()
+            {
+                let color = document.querySelector("#color").value;
+                document.querySelector("body").style.backgroundColor = color;
+            }
+        </script>
+    </head>
+    <body>
+        <form onsubmit = "change(); return false;">
+            <input type = "text" id= "color">
+            <input type = "submit">
+
+        </form>
+    </body>
+</html>
