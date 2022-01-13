@@ -1,0 +1,75 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --full_width: 100%;
+}
+
+.header, .main_img, .load_pf, .process_pdf{
+    text-align: center;
+    width: var(--full_width);
+}
+
+.content {
+    position: relative;
+    top: 43%;
+    width: 100%;
+    text-align: center;
+}
+
+.main_img {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;    
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-image: url(https://s1.1zoom.me/b5050/990/Closeup_Cricket_Ball_Red_Gray_background_562610_2560x1440.jpg);
+    height: 100vh;
+}
+
+.main_img span {
+    background-color: lightgrey;
+    font-size: 30px;
+    font-weight: 900;
+    padding: 14px;
+    letter-spacing: 20px;
+}
+
+.header {
+    height: 350px;
+    background-color: lightgrey;
+}
+
+.header  h3 {
+    
+}
+
+.load_pdf {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-image: url(https://i.eurosport.com/2011/03/23/703790-21432220-1600-900.jpg);
+    height: 500px;
+
+    color: white;;
+}
+
+.load_pdf h6{
+    display: inline;
+    background-color: white;
+    color: red;
+    font-size: 10px;
+    padding: 5px;
+}
+
+.process_pdf {
+    height: 200px;
+    background-color: rgba(0, 0, blue, );
+}

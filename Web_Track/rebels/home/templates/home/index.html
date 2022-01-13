@@ -1,0 +1,58 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebels</title>
+    <link rel="icon" href="https://s1.1zoom.me/b5050/990/Closeup_Cricket_Ball_Red_Gray_background_562610_2560x1440.jpg">
+
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <script src="{% static 'home/script.js' %}" defer></script>
+
+</head>
+<body>
+    <div class="main_img">
+        <div class="content">
+            <span>REBELS</span>
+        </div>
+    </div>
+    <div class="header">
+        <div class="content">
+            <h3>Hello world</h3>
+            <a href="http://www.tneeaonline.com/TNEARegistration/index">Link</a>
+            <h1>{{ user.username }}</h1>
+            {{ error }}
+        </div>
+    </div>
+    <div class="load_pdf">
+        <div class="content">
+            <form method="POST" action="{% url 'home:index' %}">
+                {% csrf_token %}
+                
+                {{ form|crispy }}
+                <!--input id="real-file-btn" name="source_file" type="file" hidden="hidden">
+                <button id="custom-file-btn" type="button" class="btn btn-primary">Load PDF</button-->
+                <button type="submit" class="btn btn-primary">Process PDF</button>
+                <br>
+                <span id="file-name"></span>
+                <br>
+                <h6 id="file-format-msg">Choose a file of PDF format</h6>
+            </form>
+        </div>
+    </div>
+    <div class="process_pdf">
+        <div class="content">
+            <div id="file-content" style="display: block;">
+
+            </div>
+            <button class="btn btn-primary">Process</button>
+        </div>
+    </div>
+</body>
+</html>
