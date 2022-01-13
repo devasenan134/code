@@ -1,0 +1,14 @@
+let employee = {
+    baseSalary: 30_000,
+    overtime: 10,
+    rate: 20,
+    getWage: function() {
+        return this.baseSalary + (this.overtime * this.rate);
+    }
+    /*getWage() {
+        return this.baseSalary + (this.overtime * this.rate);
+    }*/
+};
+
+console.log(employee.getWage())
+
