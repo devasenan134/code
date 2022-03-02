@@ -9,10 +9,8 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-
-
-source_image = imageio.imread("Trump.jpg")
-reader = imageio.get_reader('obama_speech.mp4')
+source_image = imageio.imread("deep_fake/Trump.jpg")
+reader = imageio.get_reader('deep_fake/obama_speech.mp4')
 
 #Resize image and video to 256x256
 
