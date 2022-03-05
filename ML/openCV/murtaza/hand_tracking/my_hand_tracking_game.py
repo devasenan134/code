@@ -7,11 +7,11 @@ import hand_tracking_module as htm
 cap = cv2.VideoCapture(0)
 p_time = 0
 c_time = 0
-detector = htm.HandDetector()
+detector = htm.HandDetector(max_hands=4)
 while True:
     ret, frame = cap.read()
     frame = detector.find_hands(frame)
-    lm_list = detector.find_position(frame, ldm=[0, 4, 8, 12, 16, 20])
+    lm_list = detector.find_position(frame, hand_no=1, ldm=[0, 4, 8, 12, 16, 20])
     
     if len(lm_list) != 0:
         print(lm_list[4])

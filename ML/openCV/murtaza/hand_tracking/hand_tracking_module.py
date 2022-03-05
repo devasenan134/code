@@ -29,17 +29,18 @@ class HandDetector():
         lm_list = []
 
         if self.results.multi_hand_landmarks:
-            my_hand = self.results.multi_hand_landmarks[hand_no]
-            for id, lm in enumerate(my_hand.landmark):
-                h, w = frame.shape[:-1]
-                cx, cy = int(lm.x*w), int(lm.y*h)
-                lm_list.append([id, cx, cy])
-                if draw:
-                    if ldm != []:
-                        if id in ldm:
+            for my_hand in self.results.multi_hand_landmarks[:hand_no]:
+                # my_hand = self.results.multi_hand_landmarks[hand_no]
+                for id, lm in enumerate(my_hand.landmark):
+                    h, w = frame.shape[:-1]
+                    cx, cy = int(lm.x*w), int(lm.y*h)
+                    lm_list.append([id, cx, cy])
+                    if draw:
+                        if ldm != []:
+                            if id in ldm:
+                                cv2.circle(frame, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
+                        else:
                             cv2.circle(frame, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
-                    else:
-                        cv2.circle(frame, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
         return lm_list
 
 
