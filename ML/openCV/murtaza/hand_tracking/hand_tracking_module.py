@@ -37,9 +37,9 @@ class HandDetector():
                 if draw:
                     if ldm != []:
                         if id in ldm:
-                            cv2.circle(frame, (cx, cy), 7, (255, 0, 0), cv2.FILLED)
+                            cv2.circle(frame, (cx, cy), 7, (0, 255, 0), cv2.FILLED)
                     else:
-                        cv2.circle(frame, (cx, cy), 7, (255, 0, 0), cv2.FILLED)
+                        cv2.circle(frame, (cx, cy), 7, (0, 255, 0), cv2.FILLED)
         return lm_list
 
 

@@ -11,7 +11,7 @@ detector = htm.HandDetector()
 while True:
     ret, frame = cap.read()
     frame = detector.find_hands(frame)
-    lm_list = detector.find_position(frame, ldm=[5, 6, 7, 8])
+    lm_list = detector.find_position(frame, ldm=[0, 4, 8, 12, 16, 20])
     
     if len(lm_list) != 0:
         print(lm_list[4])
