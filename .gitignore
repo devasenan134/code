@@ -1,5 +1,7 @@
 # Ignore Mac system files
 .DS_Store
+**/.DS_Store
+
 AI/.DS_Store
 C/.DS_Store
 CSS/.DS_Store
