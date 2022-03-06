@@ -11,10 +11,10 @@ detector = htm.HandDetector(max_hands=4)
 while True:
     ret, frame = cap.read()
     frame = detector.find_hands(frame)
-    lm_list = detector.find_position(frame, hand_no=1, ldm=[0, 4, 8, 12, 16, 20])
+    lm_list = detector.find_position(frame, hand_no=2, ldm=[0, 4, 8, 12, 16, 20])
     
     if len(lm_list) != 0:
-        print(lm_list[4])
+        print(lm_list)
     
     c_time = time.time()
     fps = 1/(c_time - p_time)
