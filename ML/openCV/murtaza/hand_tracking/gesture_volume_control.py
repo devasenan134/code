@@ -9,11 +9,6 @@ from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 
-#################################################
-w_cam, h_cam = 640, 480
-#################################################
-
-
 
 devices = AudioUtilities.GetSpeakers()
 interface = devices.Activate(
@@ -29,6 +24,12 @@ max_vol = vol_range[1]
 vol = volume.GetMasterVolumeLevel()
 vol_bar = np.interp(vol, [-65, 0], [400, 150])
 vol_per = np.interp(vol, [-65, 0], [0, 100])
+
+
+#################################################
+w_cam, h_cam = 640, 480
+#################################################
+
 
 cap = cv2.VideoCapture(0)
 cap.set(3, w_cam)
