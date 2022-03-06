@@ -21,27 +21,26 @@ class HandDetector():
         if self.results.multi_hand_landmarks:
             for hand_lms in self.results.multi_hand_landmarks:
                 if draw:
-                    self.mp_draw.draw_landmarks(frame, hand_lms, self.mp_hands.HAND_CONNECTIONS, )
-
+                    self.mp_draw.draw_landmarks(frame, hand_lms, self.mp_hands.HAND_CONNECTIONS)
         return frame
 
-    def find_position(self, frame, hand_no=0, ldm=[], draw=True):
+    def find_position(self, frame, hand_no=1, ldm=[], draw=True):
         lm_list = {}
         
         if self.results.multi_hand_landmarks:
-            for hand_id, my_hand in enumerate(self.results.multi_hand_landmarks[:hand_no]):
+            for hand_id, hand_lms in enumerate(self.results.multi_hand_landmarks[:hand_no]):
                 # my_hand = self.results.multi_hand_landmarks[hand_no]
                 lms = []
-                for id, lm in enumerate(my_hand.landmark):
+                for id, lm in enumerate(hand_lms.landmark):
                     h, w = frame.shape[:-1]
                     cx, cy = int(lm.x*w), int(lm.y*h)
                     lms.append([id, cx, cy])
                     if draw:
-                        if ldm != []:
+                        if ldm == []:
+                            cv2.circle(frame, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
+                        else:
                             if id in ldm:
                                 cv2.circle(frame, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
-                        else:
-                            cv2.circle(frame, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
                 lm_list[hand_id] = lms
         return lm_list
 
@@ -58,10 +57,10 @@ def main():
         ret, frame = cap.read()
         frame = detector.find_hands(frame)
         
-        lm_list = detector.find_position(frame)
+        lm_list = detector.find_position(frame, draw=True)
         
         if len(lm_list) != 0:
-            print(lm_list[4])
+            print(lm_list)
         
         c_time = time.time()
         fps = 1/(c_time - p_time)
