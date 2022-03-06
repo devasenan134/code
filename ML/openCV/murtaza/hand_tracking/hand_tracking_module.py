@@ -26,21 +26,23 @@ class HandDetector():
         return frame
 
     def find_position(self, frame, hand_no=0, ldm=[], draw=True):
-        lm_list = []
-
+        lm_list = {}
+        
         if self.results.multi_hand_landmarks:
             for hand_id, my_hand in enumerate(self.results.multi_hand_landmarks[:hand_no]):
                 # my_hand = self.results.multi_hand_landmarks[hand_no]
+                lms = []
                 for id, lm in enumerate(my_hand.landmark):
                     h, w = frame.shape[:-1]
                     cx, cy = int(lm.x*w), int(lm.y*h)
-                    lm_list.append([hand_id, id, cx, cy])
+                    lms.append([id, cx, cy])
                     if draw:
                         if ldm != []:
                             if id in ldm:
                                 cv2.circle(frame, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
                         else:
                             cv2.circle(frame, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
+                lm_list[hand_id] = lms
         return lm_list
 
 
