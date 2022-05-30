@@ -1,0 +1,29 @@
+{% extends 'accounts/main.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %} 
+
+<br>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-body">
+            <form method="POST" action="{% url 'accounts:register' %}">
+                {% csrf_token %}
+                {{ form.username.label }}
+                {{ form.username }}
+                {{ form.email.label }}
+                {{ form.email }}
+                {{ form.password1.label }}
+                {{ form.password1 }}
+                {{ form.password2.label }}
+                {{ form.password2 }}
+
+                <input class="btn btn-info" type="submit" name="CreateUser">
+            </form>
+            {{ form.errors }}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
