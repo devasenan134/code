@@ -1,0 +1,27 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <title>Security Management System</title>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        <h2>Navbar {{ user }}</h2>
+        <form method="post" action="{% url 'manager:logoutpage'%}">
+            {% csrf_token %}
+            <input type="submit" name="logout" value="Logout">
+        </form>
+        {% else %}
+        <a href="{% url 'manager:loginpage'%}">Login</a>
+        <a href="{% url 'manager:register'%}">Signup</a>
+        {% endif %}
+        <a href="{% url 'manager:home' %}">Dashboard</a>
+        <a href="{% url 'manager:apply_leave' %}">Apply Leave</a>
+        <a href="{% url 'manager:view_leave' %}">View Leave</a>
+        <hr>
+        {% block content %}
+
+        {% endblock %}
+        <hr>
+        <h2>Footer</h2>
+    </body>
+</html>

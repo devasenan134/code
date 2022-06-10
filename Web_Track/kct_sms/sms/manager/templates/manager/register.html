@@ -1,0 +1,13 @@
+{% extends "manager/main.html"%}
+
+
+{% block content %}
+<h1>Register page</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Signup"></input>
+</form>
+
+{% endblock %}

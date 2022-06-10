@@ -1,0 +1,14 @@
+{% extends "manager/main.html"%}
+
+{% block content %}
+<h1>Home page</h1>
+<br>
+{% for routine in routines %}
+    <h3>Date: {{ routine.date }}</h3>
+    <h3>Start time: {{ routine.start_time }}</h3>
+    <h3>End Time: {{ routine.end_time }}</h3>
+    <h3>Place: {{ routine.place }}</h3>
+    <br>
+{% endfor %}
+
+{% endblock %}

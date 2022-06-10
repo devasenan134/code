@@ -1,0 +1,13 @@
+{% extends "manager/main.html"%}
+
+{% block content %}
+<h1>Leave management</h1>
+<br>
+{% for leave in leave_applied %}
+    <h3>Date: {{ leave.from_date }}</h3>
+    <h3>Start time: {{ leave.to_date }}</h3>
+    <h3>End Time: {{ leave.reason }}</h3>
+    <br>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "manager/main.html"%}
+
+{% block content %}
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Apply">
+</form>
+
+{% endblock %}
