@@ -6,7 +6,6 @@ from email.mime.application import MIMEApplication
 from time import sleep
 import csv
 
-from numpy import rec
 
 
 # sender_email = os.environ.get("my_email")
@@ -18,17 +17,24 @@ sender_passwd = "ieee2022"
 def create_content():
     subject = "MAKERFAIR -IEEE YESIST 2022 ABSTRACT SUBMISSION REG"
     content = """\
-    Dear All,
-    
-    A kind reminder, regarding the abstract submission.
+    Good Day Specialists,
 
-    Please take a note that your abstract is not in the stipulated template. 
-    Kindly modify the abstract according to the template and upload the same in the drive link given below within tomorrow(05/08/22) for further review process. 
-    Attached is the drive link and the sample template for your attention.
-    
-    Link to submit Revised Abstract: https://drive.google.com/drive/folders/1kctpKsuB-NvIKIQ0xqkyUchq9rwOUkGW?usp=sharing
+    “The secret of getting ahead is getting started”
 
-    Treat this as high priority and send us the revised template
+    The end of something leads to a new beginning and yes it was smashing begging. 
+    Congratulations on your successful submission of abstracts. 
+    The abstracts has been in the progress of reviewing. 
+    Much thanks for submitting it in the stipulated format. 
+    Upon successful reviewing, the further protocols will be enclosed.
+
+    Remarks: The prototype is not evident, practical difficulties may be there during implementation. 
+        It will be useful for smart home.
+
+
+
+    Link for registration: https://ieeeyesist12.org/registration/
+    The Registration closes on August 20th
+    
     Thanks&Regards,
     C.Bharathi Priya,
     Chair-Maker Fair
@@ -46,7 +52,7 @@ def process_csv(path):
         reader = csv.reader(file)
         next(reader)
         for i in reader:
-            if int(i[0]) in [699, 700, 689, 691, 710, 712, 718, 722, 654, 673, 688, 723]:
+            if int(i[0]) in [654, 673, 688, 689, 691, 700, 699, 710, 712, 718, 722, 723]:
                 email.append(i[1:8])
 
     filter_none = lambda mail: filter(None, mail)
@@ -86,5 +92,5 @@ def send_mail(receivers):
 receivers = process_csv("email_list.csv")
 print(receivers)
 
-for team in receivers:
-    # send_mail(team)
+
+send_mail(receivers[9])
