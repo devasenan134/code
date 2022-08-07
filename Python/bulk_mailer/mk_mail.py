@@ -6,6 +6,8 @@ from email.mime.application import MIMEApplication
 from time import sleep
 import csv
 
+from numpy import rec
+
 
 # sender_email = os.environ.get("my_email")
 # sender_passwd = os.environ.get("my_passwd")
@@ -44,14 +46,15 @@ def process_csv(path):
         reader = csv.reader(file)
         next(reader)
         for i in reader:
-            if int(i[0]) in [686, 693, 707, 709, 711, 713, 721, 727]:
-                email.extend(i[1:7])
+            if int(i[0]) in [699, 700, 689, 691, 710, 712, 718, 722, 654, 673, 688, 723]:
+                email.append(i[1:8])
 
-    email = list(filter(None, email))
+    filter_none = lambda mail: filter(None, mail)
+    email = [list(filter_none(mail))for mail in email]
     return email
 
 
-def create_msg(email, name=None):
+def create_msg(email, cc_mail, name=None):
     subject, content = create_content()
     msg = MIMEMultipart()
     msg["From"] = sender_email
@@ -59,20 +62,21 @@ def create_msg(email, name=None):
     body = MIMEText(content, "plain")
     msg.attach(body)
 
-    file = "MF-Abstract-Template.pptx"
-    with open(file, "rb") as f:
-        attachment = MIMEApplication(f.read(), Name=basename(file))
-        attachment["Content-Disposition"] = 'attachment; filename="{}"'.format(basename(file))
-    msg.attach(attachment)
+    # file = "MF-Abstract-Template.pptx"
+    # with open(file, "rb") as f:
+    #     attachment = MIMEApplication(f.read(), Name=basename(file))
+    #     attachment["Content-Disposition"] = 'attachment; filename="{}"'.format(basename(file))
+    # msg.attach(attachment)
     msg["To"] = email
+    msg["CC"] = cc_mail
     return msg
 
 
 def send_mail(receivers):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender_email, sender_passwd)
-        for email in receivers:
-            msg = create_msg(email)
+        for email in receivers[:-1]:
+            msg = create_msg(email, receivers[-1])
             server.send_message(msg)
             print("sent to " + email)
 
@@ -81,6 +85,6 @@ def send_mail(receivers):
 
 receivers = process_csv("email_list.csv")
 print(receivers)
-print(len(receivers))
 
-send_mail(receivers)
+for team in receivers:
+    # send_mail(team)
