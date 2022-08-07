@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import *
 
-from .forms import CreateUser, LeaveForm
+from .forms import *
 
 # Create your views here.
 

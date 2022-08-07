@@ -1,4 +1,3 @@
-from dataclasses import field
 from django import forms
 from .models import *
 from django.contrib.auth.models import User
@@ -11,8 +10,7 @@ class CreateUser(UserCreationForm):
         model = User
         fields = ('username', "idno", "password1", "password2")
 
-
 class LeaveForm(forms.Form):
     class Meta:
         model = Leave
-        fields = ("from_date", "to_date", "reason")
+        fields = ["from_date", "to_date", "reason"]
