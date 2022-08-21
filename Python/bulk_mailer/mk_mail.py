@@ -17,28 +17,30 @@ sender_passwd = "ieee2022"
 def create_content():
     subject = "MAKERFAIR -IEEE YESIST 2022 ABSTRACT SUBMISSION REG"
     content = """\
-    Good Day Specialists,
+Dear YESIST’12 Mentor,
 
-    “The secret of getting ahead is getting started”
+Greetings of the Day!!
+Thanks for your active guidance throughout the journey of YESIST’12 2022 for all the budding innovators. Your valuable support to the participants, allowed them to successfully submit their abstracts and projects. This added more value to YESIST’12 with quality submissions. 
 
-    The end of something leads to a new beginning and yes it was smashing begging. 
-    Congratulations on your successful submission of abstracts. 
-    The abstracts has been in the progress of reviewing. 
-    Much thanks for submitting it in the stipulated format. 
-    Upon successful reviewing, the further protocols will be enclosed.
+We would like to invite you the Grand Finale of YESIST’12 and see your students perform against the innovators from various countries.   
+Why attend the Grand Finale?
 
-    Remarks: The prototype is not evident, practical difficulties may be there during implementation. 
-        It will be useful for smart home.
+Opportunity to connect in person with the Keynote speakers and other international guests. 
+Networking with fellow pilots, committee members and mentors. 
+Opportunity to know about the innovation from other countries and interacting with the teams.
 
+For mentors attending the event physically: Please register through the registration link: https://ieeeyesist12.org/pilot-finale-registration/
+A registration fee of Rs.500 is to be paid for mentor attendance. The registration fee includes lunch and refreshments on both days of the event and dinner on 10th. No travel or accommodation will be provided by the organisers. 
 
+The details of the Grand Finale of YESIST’12 2022 are mentioned below.
+Venue: Sri Venkateshwara College of Engineering, Bengaluru, India.
+Dates: September 10,11, 2022.
 
-    Link for registration: https://ieeeyesist12.org/registration/
-    The Registration closes on August 20th
-    
-    Thanks&Regards,
-    C.Bharathi Priya,
-    Chair-Maker Fair
-    """
+(Applicable for the mentors who are interested in joining the event in physical mode)
+
+Thanks & Regards,
+Team YESIST’12 2022
+"""
 
     return subject, content
 
@@ -52,15 +54,15 @@ def process_csv(path):
         reader = csv.reader(file)
         next(reader)
         for i in reader:
-            if int(i[0]) in [654, 673, 688, 689, 691, 700, 699, 710, 712, 718, 722, 723]:
-                email.append(i[1:8])
+            if int(i[0]) in [699, 700, 689, 723, 654, 673, 688, 691, 710, 712, 718, 722, 727, 686, 701, 713, 693, 702, 717, 714, 715, 726, 731, 743]:
+                email.append(i[7])
 
-    filter_none = lambda mail: filter(None, mail)
-    email = [list(filter_none(mail))for mail in email]
+    # filter_none = lambda mail: filter(None, mail)
+    # email = [list(filter_none(mail))for mail in email]
     return email
 
 
-def create_msg(email, cc_mail, name=None):
+def create_msg(email, cc_mail=None, name=None):
     subject, content = create_content()
     msg = MIMEMultipart()
     msg["From"] = sender_email
@@ -81,16 +83,18 @@ def create_msg(email, cc_mail, name=None):
 def send_mail(receivers):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender_email, sender_passwd)
-        for email in receivers[:-1]:
-            msg = create_msg(email, receivers[-1])
+        for email in receivers:
+            msg = create_msg(email)
             server.send_message(msg)
             print("sent to " + email)
 
 
 
 
+
+
 receivers = process_csv("email_list.csv")
-print(receivers)
+print(receivers, len(receivers))
 
 
-send_mail(receivers[9])
+send_mail(receivers)
