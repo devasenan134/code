@@ -15,74 +15,92 @@ sender_passwd = "gamingdeva134"
 
 def parse_body_content(name):
     text = f"""\
-Good day Innovators,
+Dear {name},
+Greetings of the Day!!!!
+On behalf of IEEE YESIST12 Maker Fair Track, we are organizing a Webinar on an interesting topic " Idea to Product: A Research Pathway for Students" . The session is delivered by eminent and enthusiastic resource person, Mr. Ramneek Kalra,Chair, IEngage Track (IEEE YESIST12) | IEEE Impact Creator. 
+ Date & Time: June 1,2022 | 7.00PM to 8.00 PM(IST)
+Registration link:  http://shorturl.at/ktG28
 
-“The key is not spending time, but in investing it.”
-          - Stephen R.Covey
+Insights about the Webinar:
+This webinar includes the following agenda & discussion points:
+1. Introduction to Project-Based Learning
+2. Finding a Problem Statement & Solution
+3. Choosing the Right Team & Technology
+4. In-Depth Research Survey
+5. Prototype Development
+6. Securing your Idea
 
-Get ready to upgrade your innovative ideas into a working prototype..!
 
-Pin your calendar for an interesting webinar on “Idea to product: A Reasearch Pathway for Students” which is delivered by profound enthusiast, Mr. Ramneek Kalra(IEEE Impact Creator)
-
-Date: 1 June 2022
-Time: 7.00 PM to 8.00 PM(IST)
-Platform: MS TEAMS
-
-Expecting your presence on June 1!
-
-Cheers and Regards
-Team YESIST22-Maker Fair
+About the Speaker:
+	Mr.Ramneek is a Computer Science Engineer 
+	 Proactive Volunteer at numerous organizations namely IEEE, Youth for Sustainability, Atal Innovation Mission (NITI Aayog, Govt. of India), Human Circle (Young India Challenge). He is an IEEE Young Professional who is an influencer. 
+	Holding responsibilities of IEEE Impact Creator, Chair of History & Research Subcommittee under IEEE CS DVP Initiative, Chair of IEngage Track at IEEE YESIST12-2022.
+	Author at IEEE USA E-Books, Member of “Universal Access to Technology” Technical Committee of IEEE SSIT
+Kindly, pass this information to your student & young professional group and join to acquire knowledge on converting your innovative ideas to prototype 
+Thanks & Regards,
+Ms.C. Bharathi Priya,
+Chair-Maker Fair, IEEE YESIST12
 """
     
     html = f"""\
 <!DOCTYPE html>
 <html>
-    <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
-        <div style="padding:10px 30px; background-color: rgb(191, 236, 191); text-align:center;">
-            <h1 style="color:rgb(76, 94, 155);">IEEE YESIST12</h1>
+    <body>
+        <div>
+        <h4>
+            Dear { name } <br>
+            Greetings of the Day!!!!
+        </h4>
+        <h5>
+            On behalf of IEEE YESIST12 Maker Fair Track,<br>
+            We are organizing a Webinar on an interesting topic <br>
+            "Idea to Product: A Research Pathway for Students". <br>
+            The session is delivered by eminent and enthusiastic resource person, Mr. Ramneek
+            Kalra,Chair, IEngage Track (IEEE YESIST12) | IEEE Impact Creator. <br>
+            Date & Time: June 1,2022 | 7.00PM to 8.00 PM(IST)
+            <br><br><a href="http://shorturl.at/ktG28"><button class="btn btn-info">Click me to register</button></a>
+        </h5>
         </div>
         
-        <div style="margin: 10px 20%;">
-            <div style="text-align:center;">
-                <h1 style="display:inline;">Hi, </h1><h1 style="display:inline; text-transform:capitalize;">{ name }</h1>
-                <h1 style="font-style:italic; font-weight:normal;">Wanna Kill Time Productively!</h1>
-                </h4>
-            </div>
-            <hr>
-            <div>
-                <h3 style="color: rgb(90, 90, 218);">LIVE WEBINAR + Q&A</h3>
-                <h1>Idea to Product</h1>
-                <h2>A Research Pathway for Students</h2>
-            </div>
-            <br>
-            <div>
-                <h3>Get ready to upgrade your innovative ideas into a working prototype..! </h3>
-                <h4 style="font-weight: normal">
-                    Pin your calendar for an interesting webinar on “Idea to product: A Reasearch Pathway for Students” which is delivered
-                    by profound enthusiast, Mr. Ramneek Kalra(IEEE Impact Creator)
-                </h4>
-            </div>
+        <div style="background-color: grey; border-radius: 3px; padding:20px; margin:20px;">
+            <h3>
+                Insights about the Webinar:
+            </h3>
+            <h4>
+                This webinar includes the following agenda & discussion points:<br>
+                1. Introduction to Project-Based Learning<br>
+                2. Finding a Problem Statement & Solution<br>
+                3. Choosing the Right Team & Technology<br>
+                4. In-Depth Research Survey<br>
+                5. Prototype Development<br>
+                6. Securing your Idea<br>
+            </h4>
+        </div>
 
-            <br>
-            <div style="line-height: 0.2; ">
-                <h4>Date: 1 June 2022</h4>
-                <h4>Time: 7.00 PM to 8.00 PM(IST)</h4>
-                <h4>Platform: MS TEAMS</h4>
-                <br>
-                <h3>Expecting your presence on June 1!</h3>
-            </div>
-            <hr>
-            <br>
-            <div style="line-height: 0.3; ">
-                <h3>Cheers and Regards</h3>
-                <h3>Team YESIST22-Maker Fair</h3>
-            </div>
+        <div style="background-color: grey; border-radius: 3px; padding:20px; margin:20px;">
+            <h3>
+                About the Speaker:
+            </h3>
+            <h4>
+                 Mr.Ramneek is a Computer Science Engineer
+                 Proactive Volunteer at numerous organizations namely IEEE, Youth for Sustainability, Atal Innovation Mission (NITI
+                Aayog, Govt. of India), Human Circle (Young India Challenge). He is an IEEE Young Professional who is an influencer.
+                 Holding responsibilities of IEEE Impact Creator, Chair of History & Research Subcommittee under IEEE CS DVP
+                Initiative, Chair of IEngage Track at IEEE YESIST12-2022.
+                 Author at IEEE USA E-Books, Member of “Universal Access to Technology” Technical Committee of IEEE SSIT
+            </h4>
+            <h2>
+                Kindly, pass this information to your student & young professional group and join to acquire knowledge on converting
+                your innovative ideas to prototype
+                Thanks & Regards,
+                Ms.C. Bharathi Priya,
+                Chair-Maker Fair, IEEE YESIST12
+            </h2>
         </div>
     </body>
 </html>
 """
     return html, text
-
 
 def create_msg(email, name):
     msg = EmailMessage()
@@ -105,6 +123,7 @@ def create_msg(email, name):
 
 
 def send_mail():
+    
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender_email, sender_passwd)
         file = open("participants.csv", "r")
