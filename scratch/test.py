@@ -1,43 +1,21 @@
 
-class BST:
-    def __init__(self, data):
-        self.data = data
-        self.left = self.right = None
+res = []
 
-    
-def insert(root, data):
-    if root is None:
-        return BST(data)
-    else:
-        if root.data == data:
-            return root
-        elif root.data < data:
-            root.right = insert(root.right, data)
-        elif root.data > data:
-            root.left = insert(root.left, data)
-    return root
+s = input()
+k = input()
 
-def lvlOrder(root):
-    if root:
-        queue = [root]
-    else:
-        queue = []
-    for node in queue:
-        if node:
-            print(node.data)
-
-        if node.left:
-            queue.append(node.left)
-        if node.right:
-            queue.append(node.right)
-
-
-root = BST(3)
-root = insert(root, 5)
-root = insert(root, 4)
-root = insert(root, 7)
-root = insert(root, 2)
-root = insert(root, 1)
-lvlOrder(root)
-
-
+for i in range(len(s) - len(k)+1):
+    j = 0
+    start = 0
+    end = -1
+    while(j <= len(k)-1 and s[i+j]==k[j]):
+        if j == 0:
+            start = i
+        j+=1
+    if j == len(k):
+        print(i)
+        end = i+j-1
+        res.append([start, end])
+if len(res) == 0:
+    res = [(-1, -1)]
+print(*res)
