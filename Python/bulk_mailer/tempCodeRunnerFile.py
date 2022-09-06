@@ -1,1 +1,1 @@
-email = [list(filter_none(mail))for mail in email]
+

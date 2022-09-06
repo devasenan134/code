@@ -21,14 +21,18 @@ Good day Infotechs,
 
 “The only way to discover the limits of the possible is to go beyond the impossible”
 
-Yup, the wait is over and the presentation for Makers Fair is all set to happen on Sep 10,11 at Sri Venkateswara College of Engineering, Bangalore. 
+Yup, the wait is over and the Makers Fair is all set to happen on Sep 10,11 at Sri Venkateshwara College of Engineering, Bangalore. 
 
 The presentations are set to happen on Sep 10th.
 You have to present (presentation and demo) for a time of 10-12 minutes and Q&A by jury will be for 3 minutes after the presentation.
-Attached are your allotted time slot for the presentation. 
+Attached is your allotted time slot for the presentation. 
+
 Slot - {0} IST
 
-Kindly follow the abstract in the stipulated template and it is advisable to follow up the review also. The prototype should be demonstrated for hardware solution and simulation is required for software solution.Any queries if, kindly revert back to us.
+Kindly present the project in the stipulated template and it is advisable to follow up on the comments of the reviewers. 
+The prototype should be demonstrated for hardware solution and simulation is required for software solution. Any queries if, kindly revert back to us.
+
+We have attached the template to be followed in your presentation. Kindly stick on to it.
 
 Suit up for the big day!
 
@@ -85,11 +89,13 @@ def create_msg(email, time, cc_mail=None):
     body = MIMEText(content, "plain")
     msg.attach(body)
 
-    # file = "MF-Abstract-Template.pptx"
-    # with open(file, "rb") as f:
-    #     attachment = MIMEApplication(f.read(), Name=basename(file))
-    #     attachment["Content-Disposition"] = 'attachment; filename="{}"'.format(basename(file))
-    # msg.attach(attachment)
+    file = "Finale-PPT-Template.pptx"
+    with open(file, "rb") as f:
+        attachment = MIMEApplication(f.read(), Name=basename(file))
+        attachment["Content-Disposition"] = 'attachment; filename="{}"'.format(basename(file))
+    msg.attach(attachment)
+
+
     msg["To"] = email
     msg["CC"] = cc_mail
     return msg
@@ -100,21 +106,28 @@ def send_mail(mentors, slots, participants):
         server.login(sender_email, sender_passwd)
         for i in range(1, len(slots)):
             team = participants[i]
-            team.append(mentors[i])
-
+            # team.append(mentors[i])
+            
+            print(team)
             for mail in team:
                 msg = create_msg(mail, slots[i])
-
-            # server.send_message(msg)
+                server.send_message(msg)
             
             print("sent to", team)
 
 
 
+def test_mail(email, time):
+    msg = create_msg(email, time)
 
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender_email, sender_passwd)
+            server.send_message(msg) 
 
 
 mentors, slots, participants = process_csv("MFFinale-Registration.csv")
 print(slots, len(slots))
 
+
+# test_mail("devasenan.murugan@gmail.com", "2.00 PM")
 send_mail(mentors, slots, participants)
