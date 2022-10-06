@@ -14,31 +14,32 @@ import csv
 sender_email = "bharathipriya.cs@ieee.org"
 sender_passwd = "ieee2022"
 
-def create_content(content):
+def create_content(content=None):
     subject = "MAKERFAIR -IEEE YESIST 2022 ABSTRACT SUBMISSION REG"
     content = """\
-Good day Infotechs,
+Dear all, 
+Greetings of the day!
 
-“The only way to discover the limits of the possible is to go beyond the impossible”
+At the outset, I take this opportunity to Thank all the participants and mentors for your constant support and cooperation in participating the IEEE YESIST 22-MakerFair and Grand Finale. 
 
-Yup, the wait is over and the Makers Fair is all set to happen on Sep 10,11 at Sri Venkateshwara College of Engineering, Bangalore. 
+In continuation to the Maker Fair event, we are planning to propose the list of projects which focuses on Sustainable Development Goal-12(SDG-12): 
+Responsible Production and Consumption to Bangalore Humanitarian Technology Conclave (B-HTC 2022), Oct 1,2,2022
 
-The presentations are set to happen on Sep 10th.
-You have to present (presentation and demo) for a time of 10-12 minutes and Q&A by jury will be for 3 minutes after the presentation.
-Attached is your allotted time slot for the presentation. 
+About the B-HTC 2022: 
+The IEEE B-HTC 2022 is a flagship event of IEEE Bangalore Section.
+It is held annually as part of the Humanitarian outreach program of the Section where technologists, innovators, entrepreneurs, and thought leaders share their passion in addressing the pressing problems, and share vision on futuristic technologies that will/may disrupt/impact our way of working and living.
+This edition's focus of IEEE B-HTC on the theme of SDG-12 is meant to ensure good use of resources, improving energy efficiency, creating sustainable infrastructure, and providing access to basic services, as well as, green anddecent jobs and ensuring a better quality of life for all. 
 
-Slot - {0} IST
+The conference specifically focuses on: Sustainable management and use of natural resources.
+                                        Responsible management of chemicals and food waste.
+                                        Substantial reduction in waste generation.
 
-Kindly present the project in the stipulated template and it is advisable to follow up on the comments of the reviewers. 
-The prototype should be demonstrated for hardware solution and simulation is required for software solution. Any queries if, kindly revert back to us.
+If your abstract/Project falls under this category, Please send a 2 line Justification/description on How your project related/addresses to SDG-12 by 17.9.2022 before 5.00PM 
 
-We have attached the template to be followed in your presentation. Kindly stick on to it.
-
-Suit up for the big day!
-
-Thanks & Regards,
-Team YESIST’12 2022
-""".format(content)
+Thanks & Regards
+C.BharathiPriya
+(MakerFair Chair)
+""".format()
 
     return subject, content
 
@@ -48,11 +49,9 @@ Team YESIST’12 2022
 
 def process_csv(path):
     mentors = []
-    slots = []
     participants = []
     
     mentor = ""
-    time = ""
     email = []
 
     with open(path) as file:
@@ -60,28 +59,25 @@ def process_csv(path):
         next(reader)
         for i in reader:
             if i[0] != '':
-                slots.append(time)
                 mentors.append(mentor)
                 participants.append(email)
                 email = []
 
-                time = i[1] 
                 mentor = i[13]
                 email.append(i[7])
             else:
                 email.append(i[7])
             
-        slots.append(time)
         mentors.append(mentor)
         participants.append(email)
 
     # filter_none = lambda mail: filter(None, mail)
     # email = [list(filter_none(mail))for mail in email]
-    return mentors, slots, participants
+    return mentors, participants
 
 
-def create_msg(email, time, cc_mail=None):
-    subject, content = create_content(time)
+def create_msg(email, cc_mail=None):
+    subject, content = create_content()
 
     msg = MIMEMultipart()
     msg["From"] = sender_email
@@ -89,11 +85,11 @@ def create_msg(email, time, cc_mail=None):
     body = MIMEText(content, "plain")
     msg.attach(body)
 
-    file = "Finale-PPT-Template.pptx"
-    with open(file, "rb") as f:
-        attachment = MIMEApplication(f.read(), Name=basename(file))
-        attachment["Content-Disposition"] = 'attachment; filename="{}"'.format(basename(file))
-    msg.attach(attachment)
+    # file = "Finale-PPT-Template.pptx"
+    # with open(file, "rb") as f:
+    #     attachment = MIMEApplication(f.read(), Name=basename(file))
+    #     attachment["Content-Disposition"] = 'attachment; filename="{}"'.format(basename(file))
+    # msg.attach(attachment)
 
 
     msg["To"] = email
@@ -101,33 +97,32 @@ def create_msg(email, time, cc_mail=None):
     return msg
 
 
-def send_mail(mentors, slots, participants):
+def send_mail(mentors, participants):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender_email, sender_passwd)
-        for i in range(1, len(slots)):
+        for i in range(1, len(mentors)):
             team = participants[i]
-            # team.append(mentors[i])
-            
+            team.append(mentors[i])
             print(team)
             for mail in team:
-                msg = create_msg(mail, slots[i])
+                msg = create_msg(mail)
                 server.send_message(msg)
             
             print("sent to", team)
 
 
 
-def test_mail(email, time):
-    msg = create_msg(email, time)
+def test_mail(email):
+    msg = create_msg(email)
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(sender_email, sender_passwd)
             server.send_message(msg) 
 
 
-mentors, slots, participants = process_csv("MFFinale-Registration.csv")
-print(slots, len(slots))
+mentors, participants = process_csv("MFFinale-Registration.csv")
+# print(participants)
 
 
-# test_mail("devasenan.murugan@gmail.com", "2.00 PM")
-send_mail(mentors, slots, participants)
+# test_mail("devasenan.murugan@gmail.com")
+send_mail(mentors, participants)
