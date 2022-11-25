@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>
+            Create Blogs
+        </title>
+    </head>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit">Publish</button>
+        </form>
+    </body>
+</html>

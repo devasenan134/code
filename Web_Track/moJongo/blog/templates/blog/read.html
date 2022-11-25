@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>
+        Read Blogs
+    </title>
+</head>
+
+<body>
+    <table>
+    {% for blog in blogs %}
+        <tr>
+            <th><h2>Title</h2></th>
+            <th><h2>Likes</h2></th>
+            <th><h2>Content</h2></th>
+        </tr>
+        <tr>
+            <td><h3>{{blog.title}}</h3></td>
+            <td><h3>{{blog.likes}}</h3></td>
+            <td><h3>{{blog.content}}</h3></td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+
+</html>
