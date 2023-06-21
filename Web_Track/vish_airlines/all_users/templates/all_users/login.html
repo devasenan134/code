@@ -1,0 +1,25 @@
+{% extends 'all_users/main.html'%}
+
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="password" placeholder="Password">
+                <label for="is_admin">Admin</label>
+                <input type="checkbox" name="is_admin" value="True">
+                <input class="btn btn-info" type="submit" name="Confirm">
+            </form>
+            {% for message in messages %}
+                <p id="messages">{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
